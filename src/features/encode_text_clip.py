@@ -144,10 +144,13 @@ def main():
 
             text_outputs = model.get_text_features(**inputs)
 
-            embeddings = text_outputs.pooler_output
+            if isinstance(text_outputs, torch.Tensor):
+                embeddings = text_outputs
+            else:
+                embeddings = text_outputs.pooler_output
 
             all_embeddings.append(
-                embeddings.cpu().numpy()
+                embeddings.detach().cpu().numpy()
             )
 
     # --------------------------------------------------
