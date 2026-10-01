@@ -33,13 +33,13 @@ ENV/
 !.env.example
 
 # Data artifacts
-data/raw/
-data/processed/
-*.parquet
-*.csv.gz
-*.feather
-*.pkl
-*.pickle
+# data/raw/
+# data/processed/
+# *.parquet
+# *.csv.gz
+# *.feather
+# *.pkl
+# *.pickle
 
 # macOS
 .DS_Store
