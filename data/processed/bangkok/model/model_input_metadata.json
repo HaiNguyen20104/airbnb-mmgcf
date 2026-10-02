@@ -1,0 +1,113 @@
+{
+    "created_at": "2026-10-02T23:12:09.637241+07:00",
+    "step": "5.1",
+    "status": "PASS",
+    "city": "bangkok",
+    "counts": {
+        "users": 4411,
+        "items": 8308,
+        "nodes": 12719,
+        "train_interactions": 18512,
+        "validation_interactions": 4408,
+        "test_interactions": 4411,
+        "cold_start_users": 0,
+        "cold_start_items": 1237
+    },
+    "graph": {
+        "edge_index_shape": [
+            2,
+            37024
+        ],
+        "normalized_adj_shape": [
+            12719,
+            12719
+        ],
+        "normalized_adj_nnz": 37024,
+        "zero_degree_users": 0,
+        "zero_degree_items": 1237,
+        "saved_vs_rebuilt_max_abs_diff": 2.9802322387695312e-08,
+        "train_only": true
+    },
+    "features": {
+        "text_shape": [
+            8308,
+            512
+        ],
+        "image_shape": [
+            8308,
+            512
+        ],
+        "feature_dim": 512,
+        "dtype": "float32",
+        "item_mapping_signature": "2f882013c0c1e5e08990e896fce4c969311b3a152155dc7a01a0e831eafa1afd"
+    },
+    "cold_start_item_idx_preview": [
+        8,
+        9,
+        14,
+        15,
+        34,
+        39,
+        53,
+        55,
+        59,
+        63,
+        65,
+        93,
+        132,
+        136,
+        139,
+        149,
+        150,
+        171,
+        190,
+        192,
+        210,
+        214,
+        223,
+        227,
+        229,
+        231,
+        236,
+        251,
+        272,
+        278,
+        285,
+        292,
+        320,
+        325,
+        326,
+        328,
+        329,
+        341,
+        356,
+        361,
+        384,
+        398,
+        413,
+        416,
+        430,
+        447,
+        453,
+        455,
+        456,
+        463
+    ],
+    "device": "cpu",
+    "warnings": [
+        "Train split does not cover 1237 mapped item(s). They are retained as cold-start items because text/image features are available."
+    ],
+    "paths": {
+        "item_mapping": "C:\\Users\\anhng\\Downloads\\airbnb-mmgcf\\data\\processed\\bangkok\\features\\item_mapping.parquet",
+        "user_mapping": "C:\\Users\\anhng\\Downloads\\airbnb-mmgcf\\data\\processed\\bangkok\\features\\user_mapping.parquet",
+        "text_features": "C:\\Users\\anhng\\Downloads\\airbnb-mmgcf\\data\\processed\\bangkok\\features\\text_features.npy",
+        "image_features": "C:\\Users\\anhng\\Downloads\\airbnb-mmgcf\\data\\processed\\bangkok\\features\\image_features.npy",
+        "train_interactions": "C:\\Users\\anhng\\Downloads\\airbnb-mmgcf\\data\\processed\\bangkok\\graph\\train_interactions.parquet",
+        "val_interactions": "C:\\Users\\anhng\\Downloads\\airbnb-mmgcf\\data\\processed\\bangkok\\graph\\val_interactions.parquet",
+        "test_interactions": "C:\\Users\\anhng\\Downloads\\airbnb-mmgcf\\data\\processed\\bangkok\\graph\\test_interactions.parquet",
+        "interactions_mapped": "C:\\Users\\anhng\\Downloads\\airbnb-mmgcf\\data\\processed\\bangkok\\graph\\interactions_mapped.parquet",
+        "edge_index": "C:\\Users\\anhng\\Downloads\\airbnb-mmgcf\\data\\processed\\bangkok\\graph\\edge_index.pt",
+        "norm_adj": "C:\\Users\\anhng\\Downloads\\airbnb-mmgcf\\data\\processed\\bangkok\\graph\\norm_adj.pt",
+        "graph_meta": "C:\\Users\\anhng\\Downloads\\airbnb-mmgcf\\data\\processed\\bangkok\\graph\\graph_meta.json"
+    }
+}
