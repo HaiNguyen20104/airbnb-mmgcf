@@ -1,0 +1,26 @@
+{
+  "num_users": 4411,
+  "num_items": 8308,
+  "num_nodes": 12719,
+  "num_train_edges": 18512,
+  "num_edges_bidirectional": 37024,
+  "graph_density": 0.00050515,
+  "text_feature_dim": 512,
+  "image_feature_dim": 512,
+  "user_node_range": [
+    0,
+    4410
+  ],
+  "item_node_range": [
+    4411,
+    12718
+  ],
+  "norm_adj_nnz": 37024,
+  "isolated_nodes": 1237,
+  "split_strategy": "leave_one_out",
+  "split_counts": {
+    "train": 18512,
+    "val": 4408,
+    "test": 4411
+  }
+}
