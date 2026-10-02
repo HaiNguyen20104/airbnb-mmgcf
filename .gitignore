@@ -40,6 +40,7 @@ ENV/
 # *.feather
 # *.pkl
 # *.pickle
+data/processed/bangkok/features/images/
 
 # macOS
 .DS_Store

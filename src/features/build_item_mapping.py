@@ -1,7 +1,7 @@
 import pandas as pd
 from pathlib import Path
 
-INPUT_PATH = "data/processed/bangkok/listings_kcore.parquet"
+INPUT_PATH = "data/processed/bangkok/listings_final.parquet"
 OUTPUT_PATH = "data/processed/bangkok/features/item_mapping.parquet"
 
 

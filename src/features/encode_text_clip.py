@@ -12,7 +12,7 @@ LISTINGS_PATH = (
     / "data"
     / "processed"
     / "bangkok"
-    / "listings_kcore.parquet"
+    / "listings_final.parquet"
 )
 
 MAPPING_PATH = (
