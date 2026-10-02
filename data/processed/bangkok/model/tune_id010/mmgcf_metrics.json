@@ -1,0 +1,57 @@
+{
+  "best_epoch": 53,
+  "selection_metric": "validation NDCG@10",
+  "validation": {
+    "all": {
+      "count": 4408,
+      "HR@5": 0.033802177858439204,
+      "NDCG@5": 0.022908997750872254,
+      "HR@10": 0.05308529945553539,
+      "NDCG@10": 0.029132449486841863,
+      "HR@20": 0.07418330308529945,
+      "NDCG@20": 0.03442237943283775
+    },
+    "cold": {
+      "count": 752,
+      "HR@5": 0.022606382978723406,
+      "NDCG@5": 0.015255556028145243,
+      "HR@10": 0.03324468085106383,
+      "NDCG@10": 0.018791083133605266,
+      "HR@20": 0.041223404255319146,
+      "NDCG@20": 0.020722426331042067
+    },
+    "warm": {
+      "count": 3656,
+      "HR@5": 0.036105032822757115,
+      "NDCG@5": 0.02448322865226468,
+      "HR@10": 0.057166301969365424,
+      "NDCG@10": 0.031259557664531666,
+      "HR@20": 0.08096280087527352,
+      "NDCG@20": 0.03724031289360097
+    }
+  },
+  "test": null,
+  "evaluation": {
+    "ranking": "full item catalog",
+    "validation_seen_mask": "train",
+    "test_seen_mask": "train + validation",
+    "negative_sampling_exclusion": "train only",
+    "negative_candidate_pool": "items observed in train",
+    "k_values": [
+      5,
+      10,
+      20
+    ]
+  },
+  "config": {
+    "city": "bangkok",
+    "model": "late_fusion",
+    "embedding_dim": 64,
+    "num_layers": 2,
+    "attention_dim": 32,
+    "id_weight": 0.1,
+    "seed": 42,
+    "num_users": 4411,
+    "num_items": 8308
+  }
+}
