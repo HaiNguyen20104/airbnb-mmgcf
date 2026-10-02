@@ -2,8 +2,9 @@
   "num_users": 4411,
   "num_items": 8308,
   "num_nodes": 12719,
+  "num_train_interactions": 18512,
   "num_train_edges": 18512,
-  "num_edges_bidirectional": 37024,
+  "num_bidirectional_edges": 37024,
   "graph_density": 0.00050515,
   "text_feature_dim": 512,
   "image_feature_dim": 512,
@@ -22,5 +23,12 @@
     "train": 18512,
     "val": 4408,
     "test": 4411
-  }
+  },
+  "split_user_counts": {
+    "train": 4411,
+    "val": 4408,
+    "test": 4411
+  },
+  "graph_source": "train_only",
+  "interaction_semantics": "one_binary_edge_per_unique_user_item_pair"
 }
