@@ -1,0 +1,100 @@
+{
+  "name": "mmgcf_4mod_full",
+  "desc": "4 phương thức đầy đủ (audio/video) + demand + attention + InfoNCE + cold-aug",
+  "config": {
+    "seed": 42,
+    "device": "cuda",
+    "run_name": "mmgcf_4mod_full",
+    "embedding_dim": 64,
+    "n_layers": 2,
+    "multimodal": true,
+    "modalities": [
+      "text",
+      "image",
+      "audio",
+      "video"
+    ],
+    "freeze_mm": false,
+    "fusion_modalities": "attention",
+    "weighting": "alpha",
+    "id_weight": 0.25,
+    "use_demand": true,
+    "beta_demand": 0.5,
+    "lambda_contrast": 0.01,
+    "temperature": 0.2,
+    "cold_aug": true,
+    "cold_deg_threshold": 2,
+    "cold_k": 5,
+    "cold_cos_threshold": 0.5,
+    "epochs": 150,
+    "learning_rate": 0.001,
+    "batch_size": 1024,
+    "lambda_reg": 0.0001,
+    "eval_every": 1,
+    "patience_evals": 12,
+    "top_k": [
+      5,
+      10,
+      20
+    ],
+    "review_decay": 0.9,
+    "review_cap": 30,
+    "review_chunk": 100000,
+    "limit_reviews": 0,
+    "audio_k_nearest": 3,
+    "freesound_token": "",
+    "results_subdir": ""
+  },
+  "best_epoch": 22,
+  "val": {
+    "hr@10": 0.06647005444646098,
+    "ndcg@10": 0.034527048336144936
+  },
+  "test": {
+    "5": {
+      "hr": 0.03785989571525731,
+      "ndcg": 0.024542544122282444,
+      "n_users": 4411
+    },
+    "10": {
+      "hr": 0.05622307866696894,
+      "ndcg": 0.030460518566704807,
+      "n_users": 4411
+    },
+    "20": {
+      "hr": 0.08252097030151893,
+      "ndcg": 0.03708229083856804,
+      "n_users": 4411
+    }
+  },
+  "stratified_test": {
+    "cold(0)": {
+      "n_items": 768,
+      "hr@10": 0.02734375,
+      "ndcg@10": 0.013209019787609577
+    },
+    "low(1-2)": {
+      "n_items": 1377,
+      "hr@10": 0.04502541757443718,
+      "ndcg@10": 0.02462158538401127
+    },
+    "mid(3-10)": {
+      "n_items": 1931,
+      "hr@10": 0.055929570170895906,
+      "ndcg@10": 0.028394648805260658
+    },
+    "head(>10)": {
+      "n_items": 335,
+      "hr@10": 0.1701492537313433,
+      "ndcg@10": 0.10591888427734375
+    }
+  },
+  "attention_weights": {
+    "text": 0.8099538683891296,
+    "image": 0.09470641613006592,
+    "audio": 3.126937008346431e-05,
+    "video": 0.09530357271432877,
+    "review": 4.825515588890994e-06
+  },
+  "wall_time_s": 15.5
+}

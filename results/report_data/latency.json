@@ -1,0 +1,30 @@
+{
+ "model": "mmgcf_coldaug_video (best overall)",
+ "top_k": 20,
+ "repeats": 3,
+ "aggregation": "median",
+ "measurements": [
+  {
+   "device": "cuda",
+   "threads": "-",
+   "n_users": 4411,
+   "n_items": 8308,
+   "batch_users": 256,
+   "embed_total_s": 0.005,
+   "score_total_s": 0.01,
+   "ms_per_user": 0.0023,
+   "embed_plus_score_per_user_ms": 0.0035
+  },
+  {
+   "device": "cpu",
+   "threads": 14,
+   "n_users": 4411,
+   "n_items": 8308,
+   "batch_users": 256,
+   "embed_total_s": 0.042,
+   "score_total_s": 0.056,
+   "ms_per_user": 0.0127,
+   "embed_plus_score_per_user_ms": 0.0222
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+  "name": "_sweep_alpha_0",
+  "desc": "alpha=0.0",
+  "config": {
+    "seed": 42,
+    "device": "auto",
+    "run_name": "_sweep_alpha_0",
+    "embedding_dim": 64,
+    "n_layers": 2,
+    "multimodal": true,
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "freeze_mm": false,
+    "fusion_modalities": "mean",
+    "weighting": "original",
+    "id_weight": 0.0,
+    "use_demand": false,
+    "beta_demand": 0.5,
+    "lambda_contrast": 0.0,
+    "temperature": 0.2,
+    "cold_aug": false,
+    "cold_deg_threshold": 2,
+    "cold_k": 5,
+    "cold_cos_threshold": 0.5,
+    "cold_content_channel": false,
+    "cold_gamma": 0.5,
+    "cold_channel_fusion": "add",
+    "cold_content_fallback": false,
+    "cold_cos_eval": false,
+    "epochs": 150,
+    "learning_rate": 0.001,
+    "batch_size": 1024,
+    "lambda_reg": 0.0001,
+    "eval_every": 1,
+    "patience_evals": 12,
+    "top_k": [
+      5,
+      10,
+      20
+    ],
+    "review_decay": 0.9,
+    "review_cap": 30,
+    "review_chunk": 100000,
+    "limit_reviews": 0,
+    "audio_k_nearest": 3,
+    "freesound_token": "",
+    "results_subdir": ""
+  },
+  "best_epoch": 35,
+  "val": {
+    "hr@10": 0.047186932849364795,
+    "ndcg@10": 0.024644474529327585
+  },
+  "test": {
+    "5": {
+      "hr": 0.030151892994785764,
+      "ndcg": 0.020212317675697793,
+      "n_users": 4411
+    },
+    "10": {
+      "hr": 0.04375425073679438,
+      "ndcg": 0.024622053858034874,
+      "n_users": 4411
+    },
+    "20": {
+      "hr": 0.06121060983903877,
+      "ndcg": 0.029010204188329617,
+      "n_users": 4411
+    }
+  },
+  "stratified_test": {
+    "cold(0)": {
+      "n_items": 768,
+      "hr@10": 0.03515625,
+      "ndcg@10": 0.019058382138609886
+    },
+    "low(1-2)": {
+      "n_items": 1377,
+      "hr@10": 0.03558460421205519,
+      "ndcg@10": 0.020900076255202293
+    },
+    "mid(3-10)": {
+      "n_items": 1931,
+      "hr@10": 0.050750906266183324,
+      "ndcg@10": 0.027953723445534706
+    },
+    "head(>10)": {
+      "n_items": 335,
+      "hr@10": 0.056716417910447764,
+      "ndcg@10": 0.03347162529826164
+    }
+  },
+  "attention_weights": null,
+  "wall_time_s": 12.4
+}

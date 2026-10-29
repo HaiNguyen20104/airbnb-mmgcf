@@ -1,0 +1,94 @@
+{
+  "name": "mmgcf_coldcc",
+  "desc": "MMGCF gốc faithful + kênh nội dung trực tiếp cho item lạnh (P1, inference-time)",
+  "config": {
+    "seed": 42,
+    "device": "cuda",
+    "run_name": "mmgcf_coldcc",
+    "embedding_dim": 64,
+    "n_layers": 2,
+    "multimodal": true,
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "freeze_mm": false,
+    "fusion_modalities": "mean",
+    "weighting": "original",
+    "id_weight": 0.25,
+    "use_demand": false,
+    "beta_demand": 0.5,
+    "lambda_contrast": 0.0,
+    "temperature": 0.2,
+    "cold_aug": false,
+    "cold_deg_threshold": 2,
+    "cold_k": 5,
+    "cold_cos_threshold": 0.5,
+    "cold_content_channel": true,
+    "cold_gamma": 0.5,
+    "epochs": 150,
+    "learning_rate": 0.001,
+    "batch_size": 1024,
+    "lambda_reg": 0.0001,
+    "eval_every": 1,
+    "patience_evals": 12,
+    "top_k": [
+      5,
+      10,
+      20
+    ],
+    "review_decay": 0.9,
+    "review_cap": 30,
+    "review_chunk": 100000,
+    "limit_reviews": 0,
+    "audio_k_nearest": 3,
+    "freesound_token": "",
+    "results_subdir": ""
+  },
+  "best_epoch": 120,
+  "val": {
+    "hr@10": 0.05558076225045372,
+    "ndcg@10": 0.030139018236886167
+  },
+  "test": {
+    "5": {
+      "hr": 0.03513942416685559,
+      "ndcg": 0.02369145158623743,
+      "n_users": 4411
+    },
+    "10": {
+      "hr": 0.05327590115620041,
+      "ndcg": 0.029539372317983238,
+      "n_users": 4411
+    },
+    "20": {
+      "hr": 0.07708002720471549,
+      "ndcg": 0.035516999102279415,
+      "n_users": 4411
+    }
+  },
+  "stratified_test": {
+    "cold(0)": {
+      "n_items": 768,
+      "hr@10": 0.07161458333333333,
+      "ndcg@10": 0.043524179607629776
+    },
+    "low(1-2)": {
+      "n_items": 1377,
+      "hr@10": 0.02832244008714597,
+      "ndcg@10": 0.016980035230517387
+    },
+    "mid(3-10)": {
+      "n_items": 1931,
+      "hr@10": 0.05800103573278094,
+      "ndcg@10": 0.030053477734327316
+    },
+    "head(>10)": {
+      "n_items": 335,
+      "hr@10": 0.08656716417910448,
+      "ndcg@10": 0.04613978788256645
+    }
+  },
+  "attention_weights": null,
+  "wall_time_s": 40.3
+}
