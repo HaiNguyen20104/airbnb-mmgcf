@@ -1,0 +1,103 @@
+{
+  "name": "_seed5_mmgcf_coldaug_video_s2",
+  "desc": "mmgcf_coldaug_video seed=2",
+  "config": {
+    "seed": 2,
+    "device": "auto",
+    "run_name": "_seed5_mmgcf_coldaug_video_s2",
+    "embedding_dim": 64,
+    "n_layers": 2,
+    "multimodal": true,
+    "modalities": [
+      "text",
+      "image",
+      "video"
+    ],
+    "freeze_mm": false,
+    "fusion_modalities": "attention",
+    "weighting": "alpha",
+    "id_weight": 0.25,
+    "use_demand": true,
+    "beta_demand": 0.5,
+    "lambda_contrast": 0.01,
+    "temperature": 0.2,
+    "cold_aug": true,
+    "cold_deg_threshold": 2,
+    "cold_k": 5,
+    "cold_cos_threshold": 0.5,
+    "cold_content_channel": false,
+    "cold_gamma": 0.5,
+    "cold_channel_fusion": "add",
+    "cold_content_fallback": false,
+    "cold_cos_eval": false,
+    "epochs": 150,
+    "learning_rate": 0.001,
+    "batch_size": 1024,
+    "lambda_reg": 0.0001,
+    "eval_every": 1,
+    "patience_evals": 12,
+    "top_k": [
+      5,
+      10,
+      20
+    ],
+    "review_decay": 0.9,
+    "review_cap": 30,
+    "review_chunk": 100000,
+    "limit_reviews": 0,
+    "audio_k_nearest": 3,
+    "freesound_token": "",
+    "results_subdir": ""
+  },
+  "best_epoch": 17,
+  "val": {
+    "hr@10": 0.06669691470054447,
+    "ndcg@10": 0.035358295076734145
+  },
+  "test": {
+    "5": {
+      "hr": 0.03627295397868964,
+      "ndcg": 0.02375578432714229,
+      "n_users": 4411
+    },
+    "10": {
+      "hr": 0.05599637270460213,
+      "ndcg": 0.03017240126387087,
+      "n_users": 4411
+    },
+    "20": {
+      "hr": 0.08274767626388574,
+      "ndcg": 0.03697404940851666,
+      "n_users": 4411
+    }
+  },
+  "stratified_test": {
+    "cold(0)": {
+      "n_items": 768,
+      "hr@10": 0.032552083333333336,
+      "ndcg@10": 0.014806586317718029
+    },
+    "low(1-2)": {
+      "n_items": 1377,
+      "hr@10": 0.04502541757443718,
+      "ndcg@10": 0.024036766961216927
+    },
+    "mid(3-10)": {
+      "n_items": 1931,
+      "hr@10": 0.05955463490419472,
+      "ndcg@10": 0.031102895736694336
+    },
+    "head(>10)": {
+      "n_items": 335,
+      "hr@10": 0.13432835820895522,
+      "ndcg@10": 0.08525577187538147
+    }
+  },
+  "attention_weights": {
+    "text": 0.7704911828041077,
+    "image": 0.10216903686523438,
+    "video": 0.12728115916252136,
+    "review": 5.8571476984070614e-05
+  },
+  "wall_time_s": 14.7
+}

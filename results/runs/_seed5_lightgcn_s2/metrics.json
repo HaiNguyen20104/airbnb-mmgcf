@@ -1,0 +1,97 @@
+{
+  "name": "_seed5_lightgcn_s2",
+  "desc": "lightgcn seed=2",
+  "config": {
+    "seed": 2,
+    "device": "auto",
+    "run_name": "_seed5_lightgcn_s2",
+    "embedding_dim": 64,
+    "n_layers": 2,
+    "multimodal": false,
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "freeze_mm": false,
+    "fusion_modalities": "attention",
+    "weighting": "alpha",
+    "id_weight": 0.25,
+    "use_demand": true,
+    "beta_demand": 0.5,
+    "lambda_contrast": 0.0,
+    "temperature": 0.2,
+    "cold_aug": false,
+    "cold_deg_threshold": 2,
+    "cold_k": 5,
+    "cold_cos_threshold": 0.5,
+    "cold_content_channel": false,
+    "cold_gamma": 0.5,
+    "cold_channel_fusion": "add",
+    "cold_content_fallback": false,
+    "cold_cos_eval": false,
+    "epochs": 150,
+    "learning_rate": 0.001,
+    "batch_size": 1024,
+    "lambda_reg": 0.0001,
+    "eval_every": 1,
+    "patience_evals": 12,
+    "top_k": [
+      5,
+      10,
+      20
+    ],
+    "review_decay": 0.9,
+    "review_cap": 30,
+    "review_chunk": 100000,
+    "limit_reviews": 0,
+    "audio_k_nearest": 3,
+    "freesound_token": "",
+    "results_subdir": ""
+  },
+  "best_epoch": 31,
+  "val": {
+    "hr@10": 0.03720508166969147,
+    "ndcg@10": 0.02052357929165126
+  },
+  "test": {
+    "5": {
+      "hr": 0.02539106778508275,
+      "ndcg": 0.017085418224864125,
+      "n_users": 4411
+    },
+    "10": {
+      "hr": 0.03468601224212197,
+      "ndcg": 0.02010367332511129,
+      "n_users": 4411
+    },
+    "20": {
+      "hr": 0.048061664021763775,
+      "ndcg": 0.02345263636655233,
+      "n_users": 4411
+    }
+  },
+  "stratified_test": {
+    "cold(0)": {
+      "n_items": 768,
+      "hr@10": 0.0,
+      "ndcg@10": 0.0
+    },
+    "low(1-2)": {
+      "n_items": 1377,
+      "hr@10": 0.014524328249818447,
+      "ndcg@10": 0.00800289772450924
+    },
+    "mid(3-10)": {
+      "n_items": 1931,
+      "hr@10": 0.041429311237700675,
+      "ndcg@10": 0.022940166294574738
+    },
+    "head(>10)": {
+      "n_items": 335,
+      "hr@10": 0.1582089552238806,
+      "ndcg@10": 0.09958164393901825
+    }
+  },
+  "attention_weights": null,
+  "wall_time_s": 9.0
+}

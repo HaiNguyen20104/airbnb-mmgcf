@@ -44,8 +44,13 @@ def fuse_prod(stacked):
 
 
 def fuse_concat(stacked, layer):
-    """concat rồi chiếu về d bằng Linear (đối ứng LazyLinear trong bản gốc)."""
-    return layer(stacked.flatten(1))
+    """concat rồi chiếu về d bằng Linear (đối ứng LazyLinear trong bản gốc).
+
+    stacked: (M, n_items, d) -> flat (n_items, M*d) -> Linear -> (n_items, d)
+    """
+    M = stacked.shape[0]
+    flat = stacked.transpose(0, 1).reshape(stacked.shape[1], M * stacked.shape[2])
+    return layer(flat)
 
 
 FUSION_FN = {

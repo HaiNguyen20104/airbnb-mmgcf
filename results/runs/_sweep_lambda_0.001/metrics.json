@@ -1,0 +1,101 @@
+{
+  "name": "_sweep_lambda_0.001",
+  "desc": "lambda=0.001",
+  "config": {
+    "seed": 42,
+    "device": "auto",
+    "run_name": "_sweep_lambda_0.001",
+    "embedding_dim": 64,
+    "n_layers": 2,
+    "multimodal": true,
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "freeze_mm": false,
+    "fusion_modalities": "attention",
+    "weighting": "alpha",
+    "id_weight": 0.25,
+    "use_demand": true,
+    "beta_demand": 0.5,
+    "lambda_contrast": 0.001,
+    "temperature": 0.2,
+    "cold_aug": true,
+    "cold_deg_threshold": 2,
+    "cold_k": 5,
+    "cold_cos_threshold": 0.5,
+    "cold_content_channel": false,
+    "cold_gamma": 0.5,
+    "cold_channel_fusion": "add",
+    "cold_content_fallback": false,
+    "cold_cos_eval": false,
+    "epochs": 150,
+    "learning_rate": 0.001,
+    "batch_size": 1024,
+    "lambda_reg": 0.0001,
+    "eval_every": 1,
+    "patience_evals": 12,
+    "top_k": [
+      5,
+      10,
+      20
+    ],
+    "review_decay": 0.9,
+    "review_cap": 30,
+    "review_chunk": 100000,
+    "limit_reviews": 0,
+    "audio_k_nearest": 3,
+    "freesound_token": "",
+    "results_subdir": ""
+  },
+  "best_epoch": 9,
+  "val": {
+    "hr@10": 0.03901996370235935,
+    "ndcg@10": 0.02089897580650871
+  },
+  "test": {
+    "5": {
+      "hr": 0.019723418725912493,
+      "ndcg": 0.012914030400859476,
+      "n_users": 4411
+    },
+    "10": {
+      "hr": 0.034912718204488775,
+      "ndcg": 0.017872325189935315,
+      "n_users": 4411
+    },
+    "20": {
+      "hr": 0.0510088415325323,
+      "ndcg": 0.02192849564205416,
+      "n_users": 4411
+    }
+  },
+  "stratified_test": {
+    "cold(0)": {
+      "n_items": 768,
+      "hr@10": 0.032552083333333336,
+      "ndcg@10": 0.016250794753432274
+    },
+    "low(1-2)": {
+      "n_items": 1377,
+      "hr@10": 0.020334059549745823,
+      "ndcg@10": 0.01017927285283804
+    },
+    "mid(3-10)": {
+      "n_items": 1931,
+      "hr@10": 0.02848265147591921,
+      "ndcg@10": 0.013600992038846016
+    },
+    "head(>10)": {
+      "n_items": 335,
+      "hr@10": 0.1373134328358209,
+      "ndcg@10": 0.07783237099647522
+    }
+  },
+  "attention_weights": {
+    "text": 0.7883680462837219,
+    "image": 0.20494502782821655,
+    "review": 0.006686883978545666
+  },
+  "wall_time_s": 8.3
+}

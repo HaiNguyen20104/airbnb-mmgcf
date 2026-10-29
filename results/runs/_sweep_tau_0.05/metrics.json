@@ -1,0 +1,101 @@
+{
+  "name": "_sweep_tau_0.05",
+  "desc": "tau=0.05",
+  "config": {
+    "seed": 42,
+    "device": "auto",
+    "run_name": "_sweep_tau_0.05",
+    "embedding_dim": 64,
+    "n_layers": 2,
+    "multimodal": true,
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "freeze_mm": false,
+    "fusion_modalities": "attention",
+    "weighting": "alpha",
+    "id_weight": 0.25,
+    "use_demand": true,
+    "beta_demand": 0.5,
+    "lambda_contrast": 0.01,
+    "temperature": 0.05,
+    "cold_aug": true,
+    "cold_deg_threshold": 2,
+    "cold_k": 5,
+    "cold_cos_threshold": 0.5,
+    "cold_content_channel": false,
+    "cold_gamma": 0.5,
+    "cold_channel_fusion": "add",
+    "cold_content_fallback": false,
+    "cold_cos_eval": false,
+    "epochs": 150,
+    "learning_rate": 0.001,
+    "batch_size": 1024,
+    "lambda_reg": 0.0001,
+    "eval_every": 1,
+    "patience_evals": 12,
+    "top_k": [
+      5,
+      10,
+      20
+    ],
+    "review_decay": 0.9,
+    "review_cap": 30,
+    "review_chunk": 100000,
+    "limit_reviews": 0,
+    "audio_k_nearest": 3,
+    "freesound_token": "",
+    "results_subdir": ""
+  },
+  "best_epoch": 29,
+  "val": {
+    "hr@10": 0.061252268602540835,
+    "ndcg@10": 0.0330180758397985
+  },
+  "test": {
+    "5": {
+      "hr": 0.03423260031738835,
+      "ndcg": 0.021534778431582472,
+      "n_users": 4411
+    },
+    "10": {
+      "hr": 0.05350260711856722,
+      "ndcg": 0.02782667118086195,
+      "n_users": 4411
+    },
+    "20": {
+      "hr": 0.07549308546814781,
+      "ndcg": 0.03334662867451001,
+      "n_users": 4411
+    }
+  },
+  "stratified_test": {
+    "cold(0)": {
+      "n_items": 768,
+      "hr@10": 0.02734375,
+      "ndcg@10": 0.013887356035411358
+    },
+    "low(1-2)": {
+      "n_items": 1377,
+      "hr@10": 0.03848946986201888,
+      "ndcg@10": 0.020886728540062904
+    },
+    "mid(3-10)": {
+      "n_items": 1931,
+      "hr@10": 0.059036768513723456,
+      "ndcg@10": 0.03044922649860382
+    },
+    "head(>10)": {
+      "n_items": 335,
+      "hr@10": 0.14328358208955225,
+      "ndcg@10": 0.07319246977567673
+    }
+  },
+  "attention_weights": {
+    "text": 0.891792893409729,
+    "image": 0.10818685591220856,
+    "review": 2.025219873758033e-05
+  },
+  "wall_time_s": 16.0
+}

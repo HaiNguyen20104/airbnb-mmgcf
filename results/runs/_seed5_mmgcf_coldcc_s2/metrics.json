@@ -1,0 +1,97 @@
+{
+  "name": "_seed5_mmgcf_coldcc_s2",
+  "desc": "mmgcf_coldcc seed=2",
+  "config": {
+    "seed": 2,
+    "device": "auto",
+    "run_name": "_seed5_mmgcf_coldcc_s2",
+    "embedding_dim": 64,
+    "n_layers": 2,
+    "multimodal": true,
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "freeze_mm": false,
+    "fusion_modalities": "mean",
+    "weighting": "original",
+    "id_weight": 0.25,
+    "use_demand": false,
+    "beta_demand": 0.5,
+    "lambda_contrast": 0.0,
+    "temperature": 0.2,
+    "cold_aug": false,
+    "cold_deg_threshold": 2,
+    "cold_k": 5,
+    "cold_cos_threshold": 0.5,
+    "cold_content_channel": true,
+    "cold_gamma": 0.5,
+    "cold_channel_fusion": "add",
+    "cold_content_fallback": false,
+    "cold_cos_eval": false,
+    "epochs": 150,
+    "learning_rate": 0.001,
+    "batch_size": 1024,
+    "lambda_reg": 0.0001,
+    "eval_every": 1,
+    "patience_evals": 12,
+    "top_k": [
+      5,
+      10,
+      20
+    ],
+    "review_decay": 0.9,
+    "review_cap": 30,
+    "review_chunk": 100000,
+    "limit_reviews": 0,
+    "audio_k_nearest": 3,
+    "freesound_token": "",
+    "results_subdir": ""
+  },
+  "best_epoch": 142,
+  "val": {
+    "hr@10": 0.05852994555353902,
+    "ndcg@10": 0.031724724390460125
+  },
+  "test": {
+    "5": {
+      "hr": 0.03649965994105645,
+      "ndcg": 0.023530417965480156,
+      "n_users": 4411
+    },
+    "10": {
+      "hr": 0.052142371344366355,
+      "ndcg": 0.028625203344292548,
+      "n_users": 4411
+    },
+    "20": {
+      "hr": 0.07685332124234867,
+      "ndcg": 0.0348991363893802,
+      "n_users": 4411
+    }
+  },
+  "stratified_test": {
+    "cold(0)": {
+      "n_items": 768,
+      "hr@10": 0.055989583333333336,
+      "ndcg@10": 0.03298268839716911
+    },
+    "low(1-2)": {
+      "n_items": 1377,
+      "hr@10": 0.034858387799564274,
+      "ndcg@10": 0.019545411691069603
+    },
+    "mid(3-10)": {
+      "n_items": 1931,
+      "hr@10": 0.05748316934230968,
+      "ndcg@10": 0.030762474983930588
+    },
+    "head(>10)": {
+      "n_items": 335,
+      "hr@10": 0.08358208955223881,
+      "ndcg@10": 0.043637897819280624
+    }
+  },
+  "attention_weights": null,
+  "wall_time_s": 62.1
+}
