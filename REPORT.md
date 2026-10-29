@@ -181,9 +181,19 @@ Hình `results/figures/tsne_before_after_denoise.png` — chiếu t-SNE (perplex
 
 ---
 
-## 6. Độ trễ suy luận (Inference Latency) — CHƯA ĐO
+## 6. Độ trễ suy luận (Inference Latency) — ✅ ĐẠT, dư tiêu chuẩn <50ms
 
-Yêu cầu: **< 50ms cho Top-20**. Phase 7 được thiết kế để đo trên checkpoint `mmgcf_coldaug_video` (batch 256 users, ms/user, GPU + CPU) nhưng bị dừng trước khi thực hiện — **không có số liệu thật trong báo cáo này** (không ước lượng).
+**Mô hình đo:** checkpoint `mmgcf_coldaug_video` (cấu hình tốt nhất tổng thể; 8,308 items, embedding 64-dim, sinh Top-20). Quy trình: warm-up 1 lần (trừ chi phí khởi động kernel), lặp 3 lần lấy **trung vị**; `ms/user` tính từ phép chấm điểm toàn bộ items + `topk(k=20)` trên tất cả users, kèm tổng amortized (chia đều cả bước sinh embedding).
+
+| Thiết bị | Threads | Users | Bước embed (tất cả users) | Score + Top-20 (tất cả) | **ms/user** | ms/user (amortized tổng) |
+|---|---|---|---|---|---|---|
+| **CUDA (GPU)** | — | — | 0.005s | 0.010s | **0.0023** | **0.0035** |
+| **CPU** | mặc định | — | 0.042s | 0.056s | **0.0127** | **0.0222** |
+
+**Kết luận §6:**
+- **Cả GPU lẫn CPU đều thuộc hàng nghìn lần nhỏ hơn mốc 50ms**: GPU dư ~14.000×, CPU dư ~2.250×. Độ trễ model suy luận thực sự cho 1 user là **< 0,03 ms** kể cả khi tính đều cả bước xây dựng embedding — tiêu chí < 50ms về sinh danh sách Top‑20 **đạt tuyệt đối**.
+- Độ trễ thực tế khi triển khai sẽ bị chi phối bởi overhead ngoài model (serializáció, HTTP, I/O trong service) chứ không phải bởi MMGCF: toán học lõi chỉ là một matmul 64-dim × 8.308 items + topk.
+- Số liệu nguồn: `results/report_data/latency.json` (top_k=20, repeats=3, median).
 
 ---
 
@@ -217,4 +227,5 @@ Yêu cầu: **< 50ms cho Top-20**. Phase 7 được thiết kế để đo trên
 - Canonical 9-config: `results/ablation_matrix.csv`, `results/runs/<name>/metrics.json`
 - Thí nghiệm báo cáo Phase 1–5 (39 runs tiền tố `_`): `results/report_data/experiments.json`, log `results/report_data/_log.txt`
 - Biểu đồ: `results/figures/sensitivity_sweep.png` (từ experiments.json), `results/figures/tsne_before_after_denoise.png` (checkpoint `mmgcf_demand`, t-SNE seed 42; số liệu `results/report_data/tsne_summary.json`)
+- Latency: `results/report_data/latency.json` (checkpoint `mmgcf_coldaug_video`, Top-20, 3 repeats median)
 - Metrics MMGCF gốc: `git -C D:\Doan2026\airbnb-mmgcf-root show origin/feat/mmgcf:data/processed/bangkok/model/tune_id025_150/mmgcf_metrics.json`
