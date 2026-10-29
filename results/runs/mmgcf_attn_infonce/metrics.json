@@ -1,0 +1,96 @@
+{
+  "name": "mmgcf_attn_infonce",
+  "desc": "+ InfoNCE hai chiều đồ thị↔multimodal (G4, mục tiêu #4)",
+  "config": {
+    "seed": 42,
+    "device": "cuda",
+    "run_name": "mmgcf_attn_infonce",
+    "embedding_dim": 64,
+    "n_layers": 2,
+    "multimodal": true,
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "freeze_mm": false,
+    "fusion_modalities": "attention",
+    "weighting": "alpha",
+    "id_weight": 0.25,
+    "use_demand": true,
+    "beta_demand": 0.5,
+    "lambda_contrast": 0.01,
+    "temperature": 0.2,
+    "cold_aug": false,
+    "cold_deg_threshold": 2,
+    "cold_k": 5,
+    "cold_cos_threshold": 0.5,
+    "epochs": 150,
+    "learning_rate": 0.001,
+    "batch_size": 1024,
+    "lambda_reg": 0.0001,
+    "eval_every": 1,
+    "patience_evals": 12,
+    "top_k": [
+      5,
+      10,
+      20
+    ],
+    "review_decay": 0.9,
+    "review_cap": 30,
+    "review_chunk": 100000,
+    "limit_reviews": 0,
+    "audio_k_nearest": 3,
+    "freesound_token": "",
+    "results_subdir": ""
+  },
+  "best_epoch": 17,
+  "val": {
+    "hr@10": 0.05898366606170599,
+    "ndcg@10": 0.03241528781608207
+  },
+  "test": {
+    "5": {
+      "hr": 0.037633189752890504,
+      "ndcg": 0.023570205946116977,
+      "n_users": 4411
+    },
+    "10": {
+      "hr": 0.05690319655406937,
+      "ndcg": 0.029754137599919836,
+      "n_users": 4411
+    },
+    "20": {
+      "hr": 0.08070732260258445,
+      "ndcg": 0.035737932217395095,
+      "n_users": 4411
+    }
+  },
+  "stratified_test": {
+    "cold(0)": {
+      "n_items": 768,
+      "hr@10": 0.009114583333333334,
+      "ndcg@10": 0.00484224408864975
+    },
+    "low(1-2)": {
+      "n_items": 1377,
+      "hr@10": 0.04212055192447349,
+      "ndcg@10": 0.021157991141080856
+    },
+    "mid(3-10)": {
+      "n_items": 1931,
+      "hr@10": 0.06991196271361988,
+      "ndcg@10": 0.0353696383535862
+    },
+    "head(>10)": {
+      "n_items": 335,
+      "hr@10": 0.15223880597014924,
+      "ndcg@10": 0.08983083069324493
+    }
+  },
+  "attention_weights": {
+    "text": 0.7758013606071472,
+    "image": 0.22411181032657623,
+    "review": 8.683790656505153e-05
+  },
+  "wall_time_s": 10.9
+}

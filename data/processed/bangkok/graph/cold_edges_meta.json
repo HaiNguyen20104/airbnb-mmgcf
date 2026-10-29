@@ -1,0 +1,8 @@
+{
+  "cold_deg_threshold": 2,
+  "cold_items": 5934,
+  "edges_added": 29670,
+  "cos_threshold": 0.5,
+  "k": 5,
+  "avg_cos": 0.9261127390341602
+}

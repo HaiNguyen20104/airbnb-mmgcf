@@ -1,0 +1,96 @@
+{
+  "name": "mmgcf_coldaug",
+  "desc": "+ Cạnh nội dung item-item cho item lạnh (G5, mục tiêu #5)",
+  "config": {
+    "seed": 42,
+    "device": "cuda",
+    "run_name": "mmgcf_coldaug",
+    "embedding_dim": 64,
+    "n_layers": 2,
+    "multimodal": true,
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "freeze_mm": false,
+    "fusion_modalities": "attention",
+    "weighting": "alpha",
+    "id_weight": 0.25,
+    "use_demand": true,
+    "beta_demand": 0.5,
+    "lambda_contrast": 0.01,
+    "temperature": 0.2,
+    "cold_aug": true,
+    "cold_deg_threshold": 2,
+    "cold_k": 5,
+    "cold_cos_threshold": 0.5,
+    "epochs": 150,
+    "learning_rate": 0.001,
+    "batch_size": 1024,
+    "lambda_reg": 0.0001,
+    "eval_every": 1,
+    "patience_evals": 12,
+    "top_k": [
+      5,
+      10,
+      20
+    ],
+    "review_decay": 0.9,
+    "review_cap": 30,
+    "review_chunk": 100000,
+    "limit_reviews": 0,
+    "audio_k_nearest": 3,
+    "freesound_token": "",
+    "results_subdir": ""
+  },
+  "best_epoch": 15,
+  "val": {
+    "hr@10": 0.06510889292196008,
+    "ndcg@10": 0.036064424682015206
+  },
+  "test": {
+    "5": {
+      "hr": 0.04058036726365903,
+      "ndcg": 0.025582345642071045,
+      "n_users": 4411
+    },
+    "10": {
+      "hr": 0.058263432328270234,
+      "ndcg": 0.03128438647504628,
+      "n_users": 4411
+    },
+    "20": {
+      "hr": 0.08546814781228747,
+      "ndcg": 0.038125324903792994,
+      "n_users": 4411
+    }
+  },
+  "stratified_test": {
+    "cold(0)": {
+      "n_items": 768,
+      "hr@10": 0.033854166666666664,
+      "ndcg@10": 0.01790369674563408
+    },
+    "low(1-2)": {
+      "n_items": 1377,
+      "hr@10": 0.050835148874364564,
+      "ndcg@10": 0.0273334551602602
+    },
+    "mid(3-10)": {
+      "n_items": 1931,
+      "hr@10": 0.06059036768513724,
+      "ndcg@10": 0.032690778374671936
+    },
+    "head(>10)": {
+      "n_items": 335,
+      "hr@10": 0.13134328358208955,
+      "ndcg@10": 0.07009350508451462
+    }
+  },
+  "attention_weights": {
+    "text": 0.8423876762390137,
+    "image": 0.1574649065732956,
+    "review": 0.00014738643949385732
+  },
+  "wall_time_s": 10.6
+}

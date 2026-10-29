@@ -1,0 +1,44 @@
+{
+  "versions": {
+    "python": "3.13.5",
+    "torch": "2.14.1+cu126",
+    "cuda_available": true,
+    "pandas": "3.1.0",
+    "numpy": "2.5.4",
+    "device": "cuda"
+  },
+  "statuses": {
+    "preflight": "ok",
+    "data_prep_steps": {
+      "filter_listings": "skipped (exists)",
+      "filter_missing": "skipped (exists)",
+      "filter_kcore": "skipped (exists)",
+      "download_images": "skipped (exists)",
+      "filter_invalid_images": "skipped (exists)",
+      "build_item_mapping": "skipped (exists)",
+      "build_user_mapping": "skipped (exists)",
+      "encode_text_clip": "skipped (exists)",
+      "encode_image_clip": "skipped (exists)",
+      "split_dataset": "skipped (exists)",
+      "build_bipartite_graph": "skipped (exists)"
+    },
+    "data_prep": "ok",
+    "g1_reviews": "skipped (exists)",
+    "g2_external": "disabled by flag",
+    "g5_cold_aug": "ok",
+    "runs": {
+      "lightgcn": "skipped (exists)",
+      "mmgcf_orig": "skipped (exists)",
+      "mmgcf_demand": "skipped (exists)",
+      "mmgcf_attn": "skipped (exists)",
+      "mmgcf_attn_infonce": "skipped (exists)",
+      "mmgcf_coldaug": "skipped (exists)",
+      "mmgcf_coldaug_video": "skipped (exists)",
+      "mmgcf_4mod_full": "skipped (exists)",
+      "mmgcf_coldcc": "skipped (exists)"
+    },
+    "total_time_s": 0.1
+  },
+  "smoke": false,
+  "finished_at": "2026-10-29 20:08:27"
+}

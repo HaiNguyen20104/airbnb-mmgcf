@@ -1,4 +1,12 @@
+# ------------------------------------------------------------------
+# MMGCF (Airbnb Bangkok) — .gitignore
+# Nguyên tắc: chỉ track mã nguồn + dữ liệu đặc trưng nhỏ CẦN để
+# tái tạo thí nghiệm. Mọi artifact nặng/sinh lại được/tạm thời bỏ qua.
+# ------------------------------------------------------------------
+
+# ------------------------------------------------------------------
 # Python
+# ------------------------------------------------------------------
 __pycache__/
 *.py[cod]
 *$py.class
@@ -18,34 +26,66 @@ htmlcov/
 .tox/
 .nox/
 
+# ------------------------------------------------------------------
 # Virtual environments
+# ------------------------------------------------------------------
 .venv/
 venv/
 env/
 ENV/
 
+# ------------------------------------------------------------------
 # Jupyter
+# ------------------------------------------------------------------
 .ipynb_checkpoints/
 
-# Environment and secrets
+# ------------------------------------------------------------------
+# Environment & secrets (không bao giờ commit token/API key)
+# ------------------------------------------------------------------
 .env
 .env.*
 !.env.example
+src/configs/freesound_token.txt
+*.token
+*_token.txt
 
+# ------------------------------------------------------------------
 # Data artifacts
-# data/raw/
-# data/processed/
-# *.parquet
-# *.csv.gz
-# *.feather
-# *.pkl
-# *.pickle
+# ------------------------------------------------------------------
+
+# Ảnh listings đã tải (nặng, chạy lại bằng src/features/download_images.py)
 data/processed/bangkok/features/images/
 
+# Audio/video tải từ Freesound/YouTube theo khu vực + cache khung hình
+# (~2.6 GB; fetch lại bằng G2 trong run_all.py, tự resume)
+data/external/
+
+# Cache encode 693k review (fp16) — sinh lại bằng G1 với resume
+data/processed/bangkok/features/review_embeddings.f16.npy
+
+# ------------------------------------------------------------------
+# Results: giữ metrics/history/csv, bỏ checkpoint model (50–90 MB/file)
+# ------------------------------------------------------------------
+results/runs/**/best_model.pt
+results/**/best_model.pt
+results_legacy_3layers/
+
+# ------------------------------------------------------------------
+# Model/HuggingFace cache nếu được đặt trong repo
+# ------------------------------------------------------------------
+.hf_cache/
+huggingface/
+cache/
+models--*/
+
+# ------------------------------------------------------------------
 # macOS
+# ------------------------------------------------------------------
 .DS_Store
 
+# ------------------------------------------------------------------
 # Editors
+# ------------------------------------------------------------------
 .idea/
 .vscode/
 *.swp
